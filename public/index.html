@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HackMate - Your AI Hackathon Helper</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body class="light-mode">
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <h1><span class="gradient-text">Hack</span>Mate</h1>
+                <p class="tagline">Your AI Hackathon Helper</p>
+            </div>
+            <div class="header-controls">
+                <button id="theme-toggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+                <div class="user-section">
+                    <div id="g_id_onload"
+                        data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                        data-callback="handleCredentialResponse">
+                    </div>
+                    <div class="g_id_signin" data-type="standard"></div>
+                    <div id="user-profile" class="hidden">
+                        <img id="user-image" src="/placeholder.svg" alt="Profile">
+                        <span id="user-name"></span>
+                        <button id="sign-out" class="sign-out-btn">Sign Out</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="card intro-card">
+                <h2>Let's Build Your Hackathon Project! 🚀</h2>
+                <p>Tell me your idea or what problem you want to solve, and I'll help you plan your hackathon project.</p>
+            </div>
+
+            <div class="card input-card">
+                <div class="form-group">
+                    <label for="domain-select">Choose a Domain</label>
+                    <select id="domain-select">
+                        <option value="" disabled selected>Select a domain...</option>
+                        <option value="aiml">AI/ML</option>
+                        <option value="datascience">Data Science</option>
+                        <option value="webdev">Web Development</option>
+                        <option value="mobiledev">Mobile Development</option>
+                        <option value="blockchain">Blockchain</option>
+                        <option value="iot">Internet of Things (IoT)</option>
+                        <option value="ar-vr">AR/VR</option>
+                        <option value="cybersecurity">Cybersecurity</option>
+                        <option value="gamedev">Game Development</option>
+                        <option value="healthtech">Health Tech</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="skill-level">Team Skill Level</label>
+                        <select id="skill-level">
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="team-size">Team Size</label>
+                        <select id="team-size">
+                            <option value="1">Solo (1 person)</option>
+                            <option value="2-3">Small (2-3 people)</option>
+                            <option value="4-6">Medium (4-6 people)</option>
+                            <option value="7+">Large (7+ people)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="hackathon-duration">Hackathon Duration</label>
+                    <select id="hackathon-duration">
+                        <option value="24h">24 Hours</option>
+                        <option value="36h">36 Hours</option>
+                        <option value="48h">48 Hours</option>
+                        <option value="week">One Week</option>
+                    </select>
+                </div>
+
+                <!-- Project Ideas container moved here, before the generate button -->
+                <div id="project-ideas-container" class="form-group hidden">
+                    <label for="project-ideas">Select a Project Idea</label>
+                    <select id="project-ideas">
+                        <option value="" disabled selected>Choose a project idea...</option>
+                    </select>
+                    <!-- Refresh button will be added here by JavaScript -->
+                </div>
+
+                <button id="generate-btn" class="generate-btn">
+                    <span>Generate My Hackathon Plan</span>
+                    <i class="fas fa-rocket"></i>
+                </button>
+            </div>
+
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Crafting your perfect hackathon plan...</p>
+            </div>
+
+            <div id="result-section" class="card result-card hidden">
+                <div class="result-header">
+                    <h2>Your Hackathon Plan</h2>
+                    <button id="copy-btn" class="icon-btn">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="overview">Overview</button>
+                    <button class="tab-btn" data-tab="tech-stack">Tech Stack</button>
+                    <button class="tab-btn" data-tab="timeline">Timeline</button>
+                    <button class="tab-btn" data-tab="team-roles">Team Roles</button>
+                </div>
+                <div id="result-content" class="result-content">
+                    <div id="overview" class="tab-content active"></div>
+                    <div id="tech-stack" class="tab-content"></div>
+                    <div id="timeline" class="tab-content"></div>
+                    <div id="team-roles" class="tab-content"></div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Made with 💻 for hackathon enthusiasts</p>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
